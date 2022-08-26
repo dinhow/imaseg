@@ -63,6 +63,12 @@ class CftvModel {
   }
 
   String formatToClipboard() {
+    String extraStream = '';
+    if (is32kbps!) {
+      extraStream = 'Sim';
+    } else {
+      extraStream = 'Não';
+    }
     final formattedData = '''
 _______________________________
 
@@ -76,7 +82,7 @@ _______________________________
 *Porta TCP (Serviço):* $tcpPort
 *Porta RTSP:* $rtspPort
 *Quantidade de câmeras ativas:* $activeCameras
-*Configurado Stream Extra 32Kbps?*: $is32kbps
+*Configurado Stream Extra 32Kbps?*: $extraStream
 
 *Usuário:* $user
 *Senha:* $password

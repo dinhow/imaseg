@@ -103,20 +103,27 @@ class _ClosureScreenState extends State<ClosureScreen> {
             actions: [
               IconButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // If all fields is OK, show a alertDialog
-                      // asking if the informations is correct
-                      AppHelper.showNAlertDialog(context, const Text('Atenção'),
-                          const Text('Todos os dados estão corretos?'), [
-                        TextButton(
-                            onPressed: () {
-                              saveForm();
-                            },
-                            child: const Text('Sim')),
-                        TextButton(
-                            onPressed: () => Get.back(),
-                            child: const Text('Não')),
-                      ]);
+                    if (_wasPhotoTaken) {
+                      if (_formKey.currentState!.validate()) {
+                        // If all fields is OK, show a alertDialog
+                        // asking if the informations is correct
+                        AppHelper.showNAlertDialog(
+                            context,
+                            const Text('Atenção'),
+                            const Text('Todos os dados estão corretos?'), [
+                          TextButton(
+                              onPressed: () {
+                                saveForm();
+                              },
+                              child: const Text('Sim')),
+                          TextButton(
+                              onPressed: () => Get.back(),
+                              child: const Text('Não')),
+                        ]);
+                      }
+                    } else {
+                      AppHelper.showCustomSnackbar(
+                          "Necessário tirar as fotos!", Colors.red, 3);
                     }
                   },
                   icon: const Icon(Icons.check))
@@ -1154,19 +1161,24 @@ class _ClosureScreenState extends State<ClosureScreen> {
     }
 
     if (_cftvMonitoring) {
-      _formattedCftvData = CftvModel(
-              vendor: _dvrVendorController.text,
-              model: _dvrModelController.text,
-              serialNumber: _dvrSerialNumberController.text,
-              address: _dvrAddressController.text,
-              httpPort: int.parse(_dvrHttpController.text),
-              tcpPort: int.parse(_dvrTcpController.text),
-              rtspPort: int.parse(_dvrRtspController.text),
-              user: _dvrUserController.text,
-              password: _dvrPasswordController.text,
-              activeCameras: int.parse(_dvrCamQttController.text),
-              is32kbps: _is32kbps)
-          .formatToClipboard();
+      if (_is32kbps) {
+        _formattedCftvData = CftvModel(
+                vendor: _dvrVendorController.text,
+                model: _dvrModelController.text,
+                serialNumber: _dvrSerialNumberController.text,
+                address: _dvrAddressController.text,
+                httpPort: int.parse(_dvrHttpController.text),
+                tcpPort: int.parse(_dvrTcpController.text),
+                rtspPort: int.parse(_dvrRtspController.text),
+                user: _dvrUserController.text,
+                password: _dvrPasswordController.text,
+                activeCameras: int.parse(_dvrCamQttController.text),
+                is32kbps: _is32kbps)
+            .formatToClipboard();
+      } else {
+        AppHelper.showCustomSnackbar(
+            "Necessário diminuir o Stream Extra para 32Kbps!", Colors.red, 3);
+      }
     } else {
       _formattedCftvData = '';
     }

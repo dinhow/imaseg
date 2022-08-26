@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: const Text("RiseTech OS Organizze"),
+            title: const Text("Rise Control OS"),
             // actions: [
             //   IconButton(
             //       onPressed: () {}, icon: const Icon(Icons.notifications))
@@ -50,33 +50,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 child: const Center(child: Text("Fechamentos")),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SchedulingScreen()));
-                },
-                child: const Center(child: Text("Agendamentos")),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ChipsScreen()));
-                },
-                child: const Center(child: Text("CHIPs")),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SuportScreen()));
-                },
-                child: const Center(child: Text("Suporte")),
-              ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SchedulingScreen()));
+              //   },
+              //   child: const Center(child: Text("Agendamentos")),
+              // ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const ChipsScreen()));
+              //   },
+              //   child: const Center(child: Text("CHIPs")),
+              // ),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => const SuportScreen()));
+              //   },
+              //   child: const Center(child: Text("Suporte")),
+              // ),
             ],
           )),
     );
