@@ -51,8 +51,9 @@ android {
         applicationId "com.risetech.osorganizze"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 6
+        versionCode 7
         versionName 'alpha.0.4'
+        ndk { 'FULL' }
     }
 
     signingConfigs {
